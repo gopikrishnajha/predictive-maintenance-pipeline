@@ -1,0 +1,17 @@
+{
+  "analysis": [
+    "What are the most common defect types detected?",
+    "Summarize the analysis in 3 bullet points.",
+    "What is the mean confidence of obstacle class?"
+  ],
+  "evidence": [
+    "What policy was used for this run?",
+    "Timestamp of this run.",
+    "Storage details of this run."
+  ],
+  "sql": [
+    "Count defects grouped by label.",
+    "Show me frames with more than 2 defects.",
+    "Show me the rupture frames with confidence above 0.9."
+  ]
+}

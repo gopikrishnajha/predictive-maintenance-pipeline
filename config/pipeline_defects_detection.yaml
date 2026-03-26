@@ -1,0 +1,65 @@
+nc: 6
+names:
+  0: Deformation
+  1: Obstacle
+  2: Rupture
+  3: Disconnect
+  4: Misalignment
+  5: Deposition
+inference:
+  model_path: models/ov_models/pipeline_defects_detection/best.xml
+  device: GPU
+  confidence_threshold: 0.25
+  iou_threshold: 0.45
+  imgsz: 640
+  input_mode: video  # 'video' or 'images'
+  video_path: datasets/pipeline_defects_detection/video/input.mp4
+  images_path: datasets/pipeline_defects_detection/images/val
+  inference_interval: 1  # Run inference every Nth frame (video mode only)
+sqlite:
+  db_path: out/sql_data/pipeline_defects_detection.db
+  clear_on_run: true
+  clear_outputs: true
+agents:
+  confidence_threshold: 0.4
+  report_top_n: 5
+  
+  # Execution mode: 'sequential' or 'parallel'
+  # - sequential: All agents share one LLM on same device (faster, less memory)
+  # - parallel: Each agent gets separate LLM, can use different devices
+  execution_mode: sequential
+  
+  # Shared device for sequential mode
+  shared_device: NPU
+  
+  # Per-agent LLM configuration (used in parallel mode only)
+  policy:
+    llm_mode: model
+    model_id: models/ov_models/llms/Phi-4-mini-instruct-int4gq
+    device: GPU
+  
+  analysis:
+    llm_mode: model
+    model_id: models/ov_models/llms/Phi-4-mini-instruct-int4gq
+    device: GPU
+  
+  evidence:
+    llm_mode: model
+    model_id: models/ov_models/llms/Phi-4-mini-instruct-int4gq
+    device: NPU
+glue:
+  mode: model
+  model_id: models/ov_models/llms/Phi-4-mini-instruct-int4gq
+  device: NPU
+  max_steps: 4
+  verbose: true
+  enable_cache: false
+  suppress_thinking: true
+  server_url: http://localhost:8000
+  server_port: 8000
+sql:
+  model_id: models/ov_models/llms/sqlcoder-7b-2-int4cw
+  device: GPU
+  server_url: http://localhost:8000
+  server_port: 8000
+  use_case: pipeline_defects_detection

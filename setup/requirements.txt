@@ -1,0 +1,23 @@
+# Core inference dependencies
+openvino==2025.3.0
+openvino-genai==2025.3.0
+optimum-intel[openvino]
+numpy
+pillow
+opencv-python
+pyyaml
+
+# Model conversion dependencies (merged from pace-convert)
+torch>=2.0.0
+ultralytics>=8.3.0
+onnx>=1.19.0
+onnxslim>=0.1.0
+
+# LangGraph and LangChain for agentic workflows
+langgraph>=0.2.0
+langchain-core>=0.3.0
+
+# Utilities
+tqdm
+colorama
+flask

@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Conda environments
+pace/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Datasets (large files)
+datasets/train_seq/
+datasets/pipeline_defects_detection/val_seq/
+datasets/*/images/
+datasets/*/labels/
+
+# Models (large files)
+models/pt_models/*.pt
+models/ov_models/**/*.bin
+models/ov_models/**/*.xml
+models/ov_models/**/*.mapping
+models/ov_models/llms/
+
+data/
+# Outputs
+out/
+*.jsonl
+*.log
+*.html
+
+# Temporary files
+*.tmp
+*.bak
+.cache/
+
+tests/out/
+
+# video files
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+web_app/.web_app.pid
+web_app/web_app.log

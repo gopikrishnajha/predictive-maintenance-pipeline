@@ -1,0 +1,4 @@
+path: datasets/pipeline_defects_detection
+train: images/train
+val: images/val
+names: [Deformation, Obstacle, Rupture, Disconnect, Misalignment, Deposition]
